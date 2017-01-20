@@ -6,15 +6,21 @@ import React, { Component } from 'react';
 //};
 
 class SearchBar extends Component {
-  //initialize state inside the constructor
+  //initialize state inside the constructor. All class based components have state.
   constructor(props) {
     super(props);
-    
+
     this.state = { term: '' };
   }
   render() {
   //event handler for input. The event variable is returned by the event handler
-    return <input onChange={event => console.log(event.target.value)} />;
+    return (
+        <div>
+          <input
+            value = { this.state.term }
+            onChange={event => this.setState({ term: event.target.value })} />
+        </div>
+    );
   }
 }
 
