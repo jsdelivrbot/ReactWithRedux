@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 
-////When user inputs, search Youtube
-//const SearchBar = () => {
-//  return <input />
-//};
-
 class SearchBar extends Component {
   //initialize state inside the constructor. All class based components have state.
   constructor(props) {
     super(props);
-
-    this.state = { term: '' };
+    this.state={term:''};
   }
+
   render() {
   //event handler for input. The event variable is returned by the event handler
     return (
-        <div>
+        <div className="search-bar">
           <input
-            value = { this.state.term }
-            onChange={event => this.setState({ term: event.target.value })} />
+            value={this.state.term}
+            onChange={event => this.onInputChange(event.target.value)} />
         </div>
     );
+  }
+
+  onInputChange(term) {
+    this.setState({term});
+    this.props.onSearchTermChange(term);
   }
 }
 
